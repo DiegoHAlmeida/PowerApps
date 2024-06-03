@@ -1,0 +1,3 @@
+{
+  "AppFromDataMetaDataIdsToEntityNameMappings": "{\"%DataSourceName.AFD%\":\"table_produtos\",\"%DataSourceValue.AFD%\":\"[@table_produtos]\",\"%SortFieldName.AFD%\":\"\\\"Title\\\"\",\"%FilterFieldName.AFD%\":\"id_produto_cp\",\"%PrimaryNameField.AFD%\":\"\\\"id_produto_cp\\\"\",\"%PrimaryNameFieldDisplayName.AFD%\":\"'id_produto_cp'\",\"%SearchFieldName.AFD%\":\"\\\"id_produto_cp\\\"\",\"%StartsWithFieldName.AFD%\":\"Title\",\"%DeleteConfirmFieldName.AFD%\":\"Title\",\"%SortDescending.AFD%\":\"SortDescending1\",\"%BrowseScreen.AFD%\":\"BrowseScreen1\",\"%DetailScreen.AFD%\":\"DetailScreen1\",\"%EditScreen.AFD%\":\"EditScreen1\",\"%BrowseContainer.ID%\":\"BrowseGallery1\",\"%DetailEditContainer.ID%\":\"EditForm1\"}"
+}

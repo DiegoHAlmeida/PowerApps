@@ -1,0 +1,387 @@
+"print1 As screen.'printableLayout_A4Landscape_ver1.0'":
+    Height: =1500
+    LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
+    OnHidden: |-
+        =Set(
+            idCP,
+            Blank()
+        );
+        Set(
+            filialSolic,
+            Blank()
+        );
+        Set(
+            nomeAnexo,
+            Blank()
+        );
+        Set(
+            conteudoAnexo,
+            Blank()
+        );
+        Set(
+            varQtdTotal,
+            Blank()
+        );
+        Set(
+            varValorTotal,
+            Blank()
+        )
+    OnVisible: |-
+        =Set(varQtdTotal,Sum(ColecaoCarrinho,qtd))
+        ;
+        Set(varValorTotal,
+        Text(Sum(ColecaoCarrinho,valor*qtd), "$ #,##.00"))
+    Width: =1123
+
+    DataTable1_1 As dataTable.datatable:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =2
+        Color: =RGBA(100, 118, 132, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Normal
+        HeadingColor: =RGBA(20, 20, 20, 1)
+        HeadingFill: =RGBA(224, 228, 230, 1)
+        HeadingFont: =Font.Lato
+        HeadingFontWeight: =FontWeight.Semibold
+        HeadingSize: =18
+        Height: =1334
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(62, 74, 83, .2)
+        InputFill: =RGBA(0, 0, 0, 1)
+        InvertedColor: =RGBA(255, 255, 255, 1)
+        Items: =ColecaoCarrinho
+        LinkColor: =ColorFade(RGBA(0, 134, 208, 1), 30%)
+        PrimaryColor1: =RGBA(100, 118, 132, 1)
+        PrimaryColor2: =RGBA(197, 203, 207, 1)
+        PrimaryColor3: =RGBA(62, 74, 83, 1)
+        SelectedColor: =RGBA(100, 118, 132, 1)
+        SelectedFill: =RGBA(255, 255, 255, 1)
+        Size: =16
+        Width: =1089
+        X: =16
+        Y: =81
+        ZIndex: =2
+
+        cod_produto_Coluna1_1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Código"
+            FieldName: ="cod_produto"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =1
+            Text: =ThisItem.cod_produto
+            Width: =199
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        departamento_prod_Coluna1_1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Departamento"
+            FieldName: ="departamento_prod"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =5
+            Text: =ThisItem.departamento_prod
+            Width: =208
+            X: =645
+            Y: =0
+            ZIndex: =2
+
+        produto_Coluna1_1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Descrição"
+            FieldName: ="produto"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =2
+            Text: =ThisItem.produto
+            Width: =466
+            X: =201
+            Y: =0
+            ZIndex: =3
+
+        qtd_Coluna1_1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Qtd"
+            FieldName: ="qtd"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =3
+            Text: =ThisItem.qtd
+            Width: =94
+            X: =430
+            Y: =0
+            ZIndex: =4
+
+        valor_Coluna1_1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Preço"
+            FieldName: ="valor"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.valor
+            Width: =116
+            X: =0
+            Y: =0
+            ZIndex: =5
+
+    Label1_3 As label:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        Color: =RGBA(70, 83, 92, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        Size: =21
+        Text: ="Solicitação Material Uso e Consumo - "&Dropdown1_1.Selected.filial
+        Width: =783
+        X: =94
+        Y: =4
+        ZIndex: =3
+
+    Dropdown1_1 As dropdown:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        ChevronBackground: =RGBA(100, 118, 132, 1)
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronHoverBackground: =ColorFade(RGBA(100, 118, 132, 1), -20%)
+        ChevronHoverFill: =RGBA(255, 255, 255, 1)
+        Color: =RGBA(70, 83, 92, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =51
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(62, 74, 83, 1)
+        Items: =colFiliais
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(197, 203, 207, 1)
+        SelectionFill: =RGBA(100, 118, 132, 1)
+        Size: =21
+        Visible: =Not(Parent.Printing)
+        Width: =293
+        X: =584
+        Y: =13
+        ZIndex: =4
+
+    Label1_4 As label:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        Color: =RGBA(70, 83, 92, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =34
+        Size: =16
+        Text: |-
+            ="Data do pedido: "&Now()
+        VerticalAlign: =VerticalAlign.Bottom
+        Width: =445
+        X: =16
+        Y: =1415
+        ZIndex: =5
+
+    txt_codigo_5 As label:
+        Align: =Align.Right
+        Color: =RGBA(70, 83, 92, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =34
+        OnSelect: =
+        PaddingBottom: =0
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =0
+        Size: =16
+        Text: |-
+            ="Qtd total: "&Sum(ColecaoCarrinho,qtd)&" - "&"Total pedido: "&Text(Sum(ColecaoCarrinho,valor*qtd), "$ #,##.00")
+        Width: =493
+        X: =612
+        Y: =1415
+        ZIndex: =6
+
+    Icon4 As icon.Warning:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        Color: =RGBA(255, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.CancelBadge
+        OnSelect: =Back()
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =10
+        Visible: =Not(Parent.Printing)
+        ZIndex: =9
+
+    Group1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =9
+
+        Button4 As button:
+            Align: =Align.Left
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(251, 188, 159, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(246, 88, 16, 1)
+            FocusedBorderThickness: =0
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(251, 188, 159, 1)
+            OnSelect: |-
+                =//Print();;
+                Office365Outlook.SendEmailV2(
+                    "diego.almeida@unimarcas.net",
+                    Label1_3.Text & " - " & Now(),
+                    "Olá, segue anexa a solicitação de materiais de expediente da filial " & Dropdown1_1.Selected.filial,
+                    {
+                        Attachments: Table(
+                            {
+                                Name: "materiais_expediente_" & Dropdown1_1.Selected.filial & ".pdf",
+                                ContentBytes: PDF(print1)
+                            }
+                        )
+                    }
+                );
+                Notify(
+                    "E-mail encaminhado com sucesso.",
+                    NotificationType.Success,
+                    1500
+                );
+                Set(
+                    idCP,GUID());
+                Set(filialSolic, Dropdown1_1.Selected.filial)
+                ;
+                Set(
+                    nomeAnexo,
+                    "materiais_expediente_" & Dropdown1_1.Selected.filial & ".pdf"
+                );
+                Set(
+                    conteudoAnexo,
+                    PDF(print1)
+                );/*If(IsBlank(LookUp(lista_solic_materiais;id_solic_cp = idCP;id_solic_cp));
+                salvaPdfSolicMateriais.Run(
+                    nomeAnexo;idCP;filialSolic;varQtdTotal;varValorTotal;
+                    {
+                        file: {
+                            name: nomeAnexo;
+                            contentBytes: conteudoAnexo
+                        }
+                    }
+                )&&Navigate(tela_resumo;ScreenTransition.Fade);Notify(
+                    "Item já cadastrado na lista.";
+                    NotificationType.Warning;
+                    1500))
+                */
+                
+                    salvaPdfSolicMateriais.Run(
+                    nomeAnexo,idCP,filialSolic,varQtdTotal,varValorTotal,
+                    {
+                        file: {
+                            name: nomeAnexo,
+                            contentBytes: conteudoAnexo
+                        }
+                    }
+                )
+            PaddingLeft: =30
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(172, 62, 11, 1)
+            Size: =24
+            Text: ="Enviar"
+            Visible: =Not(Parent.Printing)
+            Width: =198
+            X: =907
+            Y: =14
+            ZIndex: =7
+
+        Icon3 As icon.Mail:
+            BorderColor: =RGBA(197, 203, 207, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =50
+            Icon: =Icon.Mail
+            OnSelect: |-
+                =//Print();;
+                Office365Outlook.SendEmailV2(
+                    "diego.almeida@unimarcas.net",
+                    Label1_3.Text & " - " & Now(),
+                    "Olá, segue anexa a solicitação de materiais de expediente da filial " & Dropdown1_1.Selected.filial,
+                    {
+                        Attachments: Table(
+                            {
+                                Name: "materiais_expediente_" & Dropdown1_1.Selected.filial & ".pdf",
+                                ContentBytes: PDF(print1)
+                            }
+                        )
+                    }
+                );
+                Notify(
+                    "E-mail encaminhado com sucesso.",
+                    NotificationType.Success,
+                    1500
+                );
+                Set(
+                    idCP,GUID());
+                Set(filialSolic, Dropdown1_1.Selected.filial)
+                ;
+                Set(
+                    nomeAnexo,
+                    "materiais_expediente_" & Dropdown1_1.Selected.filial & ".pdf"
+                );
+                Set(
+                    conteudoAnexo,
+                    PDF(print1)
+                );/*If(IsBlank(LookUp(lista_solic_materiais;id_solic_cp = idCP;id_solic_cp));
+                salvaPdfSolicMateriais.Run(
+                    nomeAnexo;idCP;filialSolic;varQtdTotal;varValorTotal;
+                    {
+                        file: {
+                            name: nomeAnexo;
+                            contentBytes: conteudoAnexo
+                        }
+                    }
+                )&&Navigate(tela_resumo;ScreenTransition.Fade);Notify(
+                    "Item já cadastrado na lista.";
+                    NotificationType.Warning;
+                    1500))
+                */
+                
+                    salvaPdfSolicMateriais.Run(
+                    nomeAnexo,idCP,filialSolic,varQtdTotal,varValorTotal,
+                    {
+                        file: {
+                            name: nomeAnexo,
+                            contentBytes: conteudoAnexo
+                        }
+                    }
+                )
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            Visible: =Not(Parent.Printing)
+            Width: =66
+            X: =1038
+            Y: =14
+            ZIndex: =8
+

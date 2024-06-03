@@ -1,0 +1,45 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |-
+        =Set(
+            varUser,
+            User().Email
+        );
+        Set(
+            var_Dev,
+            varUser = "diego.almeida@unimarcas.net"
+        );
+        Set(
+            varAdmin01,
+            varUser = "diego.almeida@unimarcas.net" || varUser = "jorge.seiji@unimarcas.net"
+        );
+        Set(
+            varshow01,
+            false
+        );
+        Set(
+            varAdmin02,
+            varUser = "diego.almeida@unimarcas.net" || varUser = "jorge.seiji@unimarcas.net" || varUser = "simone@unimarcas.net"
+        );
+        Set(
+            novoitem,
+            ""
+        );
+        Collect(
+            col_depart,
+            table_depart
+        );
+        Notify(
+            "Olá " & User().FullName & "!",
+            NotificationType.Success,
+            1500
+        )
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

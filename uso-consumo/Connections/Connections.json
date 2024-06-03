@@ -1,0 +1,113 @@
+{
+  "6482d483-c7c6-41f4-9c71-cce0c3c49334": {
+    "appActions": [
+      "Run"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Fluxos lógicos",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "b36eb0e2-d3e5-4738-98b0-98c82a1bae44": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowDisplayName": {
+          "value": "salvaPdfSolicMateriais"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "7290dc85-c6d8-4d24-ac52-3c45ebf7b2dc"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "b36eb0e2-d3e5-4738-98b0-98c82a1bae44"
+        },
+        "workflowDisplayName": {
+          "value": "salvaPdfSolicMateriais"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "7290dc85-c6d8-4d24-ac52-3c45ebf7b2dc"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "salvaPdfSolicMateriais"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "b36eb0e2-d3e5-4738-98b0-98c82a1bae44"
+    },
+    "dependents": [],
+    "id": "6482d483-c7c6-41f4-9c71-cce0c3c49334"
+  },
+  "89e9b8e3-46d1-4ca0-a534-1bacafa98863": {
+    "appActions": [
+      "SendEmailV2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1686/1.0.1686.3706/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "89e9b8e3-46d1-4ca0-a534-1bacafa98863"
+  },
+  "b36eb0e2-d3e5-4738-98b0-98c82a1bae44": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1685/1.0.1685.3700/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://newportdominio.sharepoint.com/sites/ItensUsoeConsumo": {
+        "dataSources": {
+          "lista_solic_materiais": {
+            "tableName": "37c1ab95-5e6c-43f0-ba55-879ea914a5cf"
+          },
+          "table_depart": {
+            "tableName": "040a97ef-3aa6-4c92-99de-62804a11a7cb"
+          },
+          "table_estoque": {
+            "tableName": "3f8d7c03-3466-4c3e-bcf6-b55559b4d8c7"
+          },
+          "table_filiais": {
+            "tableName": "b9f8af79-2a59-4e02-a820-23e9c1bf0707"
+          },
+          "table_produtos": {
+            "tableName": "847d5132-30f4-4955-936a-5023eda557ed"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "table_produtos",
+      "table_estoque",
+      "table_filiais",
+      "table_depart",
+      "lista_solic_materiais"
+    ],
+    "dependencies": {},
+    "dependents": [
+      "6482d483-c7c6-41f4-9c71-cce0c3c49334"
+    ],
+    "id": "b36eb0e2-d3e5-4738-98b0-98c82a1bae44"
+  }
+}

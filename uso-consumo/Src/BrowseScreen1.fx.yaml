@@ -1,0 +1,404 @@
+"BrowseScreen1 As screen.'phoneBrowseLayout_ver3.0'":
+    Fill: =RGBA(29, 29, 29, 1)
+    LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
+    OnHidden: =Reset(ComboBox1);Reset(TextInput2)
+    OnVisible: |-
+        =ClearCollect(
+            colFiliais,
+            table_filiais
+        );
+        ClearCollect(
+            colProd,
+            table_produtos
+        );Clear(ColecaoCarrinho);Reset(ComboBox1);Reset(TextInput2);Set(varValorItem,Blank());Notify("Adicione itens ao carrinho",NotificationType.Information,1500)
+
+    RectQuickActionBar1 As rectangle:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        Fill: =RGBA(100, 118, 132, 1)
+        Height: =88
+        Width: =640
+        ZIndex: =1
+
+    "BrowseGallery1 As gallery.'BrowseLayout_Vertical_ThreeTextOneImageVariant_ver5.0'":
+        '#CopilotOverlayLabel': ="Filtrada"
+        BorderColor: =RGBA(197, 203, 207, 1)
+        DelayItemLoading: =true
+        Height: =830
+        Items: =ColecaoCarrinho
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =90
+        Transition: =Transition.Pop
+        Width: =635
+        X: =5
+        Y: =184
+        ZIndex: =1
+
+        bt_fundoAdd_1 As button:
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |+
+                =If(ThisItem.IsSelected,RGBA(166, 166, 166, 0.54),RGBA(100, 118, 132, 0.5))
+                
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(100, 118, 132, 1), -20%)
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =24
+            Text: =""
+            Width: =609
+            X: =13
+            Y: =7
+            ZIndex: =1
+
+        txt_codigo As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =25
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: |-
+                ="Código: "&ThisItem.cod_produto
+            Width: =174
+            X: =25
+            Y: =45
+            ZIndex: =2
+
+        txt_depart As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =25
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: |-
+                ="Depart: "&ThisItem.departamento_prod
+            Width: =178
+            X: =199
+            Y: =45
+            ZIndex: =3
+
+        Separator2 As rectangle:
+            BorderColor: =RGBA(197, 203, 207, 1)
+            Fill: =RGBA(255, 133, 133, 1)
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =590
+            X: =25
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =4
+
+        ic_detalhes_1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            BorderColor: =RGBA(197, 203, 207, 1)
+            Color: =If(ThisItem.IsSelected,RGBA(255, 0, 0, 1),RGBA(237, 237, 237, 1))
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =69
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Trash
+            OnSelect: =Remove(ColecaoCarrinho,ThisItem);Notify("Item removido do carrinho",NotificationType.Warning,1000)
+            PaddingBottom: =10
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =12
+            Tooltip: ="Editar item"
+            Visible: =varAdmin01
+            Width: =57
+            X: =565
+            Y: =8
+            ZIndex: =5
+
+        TextInput1 As text:
+            BorderColor: =RGBA(197, 203, 207, 1)
+            BorderThickness: =0
+            Color: =RGBA(255, 255, 255, 1)
+            Default: =ThisItem.qtd
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 146, 152, 1)
+            FocusedBorderThickness: =0
+            Height: =30
+            HoverBorderColor: =RGBA(197, 203, 207, 1)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(62, 74, 83, 1)
+            OnChange: |
+                =If(Value(Self.Text) <=0,Notify("O valor deve ser maior que 0",NotificationType.Information,1000);Reset(Self),
+                Update(ColecaoCarrinho,
+                ThisItem,
+                {
+                    id: ThisItem.id,
+                    cod_produto:ThisItem.cod_produto,
+                    produto: ThisItem.produto,
+                    qtd: Value(Self.Text),
+                    departamento_prod: ThisItem.departamento_prod,
+                    valor: ThisItem.valor
+                }))
+            OnSelect: =Select(Parent)
+            Size: =10
+            Width: =141
+            X: =414
+            Y: =15
+            ZIndex: =7
+
+        txt_descricao As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =30
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =16
+            Text: =ThisItem.produto
+            Width: =352
+            X: =25
+            Y: =14
+            ZIndex: =8
+
+        txt_depart_1 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =25
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: |-
+                ="Total do item: "&Text(ThisItem.valor * ThisItem.qtd,"$ #,##.00")
+            Width: =178
+            X: =377
+            Y: =45
+            ZIndex: =9
+
+        txt_depart_2 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =30
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: |-
+                ="Qtd:"
+            Width: =37
+            X: =377
+            Y: =15
+            ZIndex: =10
+
+    LblAppName1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(58, 58, 58, 0)
+        Height: =88
+        Size: =24
+        Text: ="Carrinho de Produtos"
+        Width: =459
+        Wrap: =false
+        X: =88
+        ZIndex: =2
+
+    IconNewItem1 As icon.Add:
+        AccessibleLabel: =Self.Tooltip
+        BorderColor: =RGBA(197, 203, 207, 1)
+        Color: =RGBA(149, 235, 28, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        DisplayMode: =If(IsBlank(LookUp(ColecaoCarrinho,id = ComboBox1.Selected.id_produto_cp)) && IsMatch(TextInput2.Text,Match.MultipleDigits),DisplayMode.Edit,DisplayMode.Disabled)
+        Height: =70
+        Icon: =Icon.ShoppingCart
+        OnSelect: |-
+            =Collect(
+                ColecaoCarrinho,
+                {
+                    id: LookUp(
+                        table_produtos,
+                        id_produto_cp = ComboBox1.Selected.id_produto_cp,
+                        id_produto_cp
+                    ),
+                    cod_produto: ComboBox1.Selected.codigo_prod,
+                    produto: ComboBox1.Selected.descricao_prod,
+                    departamento_prod: ComboBox1.Selected.departamento_prod,
+                    qtd: Value(TextInput2.Text),
+                    valor: ComboBox1.Selected.custo_prod
+                }
+            );
+            Reset(ComboBox1);
+            Reset(TextInput2);
+            Notify(
+                "Adicionado do carrinho",
+                NotificationType.Success,
+                1000
+            )
+        PaddingBottom: =15
+        PaddingLeft: =15
+        PaddingRight: =15
+        PaddingTop: =15
+        PressedFill: =RGBA(255, 255, 255, 0.3)
+        TabIndex: =0
+        Tooltip: ="Criar novo item"
+        Visible: =varAdmin02
+        Width: =109
+        X: =531
+        Y: =97
+        ZIndex: =5
+
+    IconRefresh1_1 As icon.Reload:
+        AccessibleLabel: =Self.Tooltip
+        BorderColor: =RGBA(197, 203, 207, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =88
+        Icon: =Icon.Home
+        OnSelect: =Reset(ComboBox1);Navigate(tela_inicial,ScreenTransition.Fade)
+        PaddingBottom: =10
+        PaddingLeft: =22
+        PaddingRight: =22
+        PaddingTop: =10
+        PressedFill: =RGBA(255, 255, 255, 0.3)
+        TabIndex: =0
+        Tooltip: ="Atualizar lista"
+        Width: =88
+        ZIndex: =10
+
+    ComboBox1 As combobox:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        BorderThickness: =0
+        ChevronBackground: =RGBA(100, 118, 132, 1)
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronHoverBackground: =ColorFade(RGBA(100, 118, 132, 1), -20%)
+        ChevronHoverFill: =RGBA(255, 255, 255, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayFields: =["descricao_prod","codigo_prod"]
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =70
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(62, 74, 83, 1)
+        Items: =colProd
+        OnChange: =If(LookUp(ColecaoCarrinho,id = Self.Selected.id_produto_cp).id = Self.Selected.id_produto_cp,Reset(ComboBox1),"")
+        OnSelect: =
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(197, 203, 207, 1)
+        SearchFields: =["descricao_prod"]
+        SearchItems: =Search(colProd,ComboBox1.SearchText,descricao_prod)
+        SelectionFill: =RGBA(100, 118, 132, 1)
+        SelectMultiple: =false
+        Size: =16
+        Template: =ListItemTemplate.Double
+        Width: =379
+        X: =18
+        Y: =97
+        ZIndex: =11
+
+    TextInput2 As text:
+        BorderColor: =RGBA(197, 203, 207, 1)
+        BorderThickness: =0
+        Clear: =true
+        Color: =RGBA(255, 255, 255, 1)
+        Default: =""
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 0, 0, 1)
+        FocusedBorderThickness: =4
+        Format: =TextFormat.Number
+        Height: =70
+        HintText: ="Qtd"
+        HoverBorderColor: =RGBA(197, 203, 207, 1)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(62, 74, 83, 1)
+        Size: =21
+        Width: =118
+        X: =413
+        Y: =97
+        ZIndex: =12
+
+    txt_codigo_3 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Height: =39
+        OnSelect: =
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        Text: |-
+            ="Total Qtd: "&Sum(ColecaoCarrinho,qtd)&" - "&"Total pedido: "&Text(Sum(ColecaoCarrinho,valor*qtd), "$ #,##.00")
+        Width: =427
+        X: =107
+        Y: =1014
+        ZIndex: =13
+
+    Button3 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =If(IsEmpty(ColecaoCarrinho),DisplayMode.Disabled,DisplayMode.Edit)
+        Fill: =RGBA(246, 88, 16, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =56
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(100, 118, 132, 1), -20%)
+        OnSelect: =Set(mypdf,PDF(BrowseScreen1));Navigate(print1)
+        RadiusBottomLeft: =30
+        RadiusBottomRight: =30
+        RadiusTopLeft: =30
+        RadiusTopRight: =30
+        Size: =20
+        Text: ="Salvar"
+        Width: =226
+        X: =222
+        Y: =1053
+        ZIndex: =14
+
+    IconRefresh1_4 As icon.Reload:
+        AccessibleLabel: =Self.Tooltip
+        BorderColor: =RGBA(197, 203, 207, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =88
+        Icon: =Icon.Erase
+        OnSelect: =Clear(ColecaoCarrinho);Reset(ComboBox1);Reset(TextInput2);Notify("Carrinho esvaziado",NotificationType.Information,1500)
+        PaddingBottom: =10
+        PaddingLeft: =22
+        PaddingRight: =22
+        PaddingTop: =10
+        PressedFill: =RGBA(255, 255, 255, 0.3)
+        TabIndex: =0
+        Tooltip: ="Atualizar lista"
+        Width: =88
+        X: =552
+        ZIndex: =15
+

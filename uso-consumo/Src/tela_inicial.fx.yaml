@@ -1,0 +1,91 @@
+tela_inicial As screen:
+    BackgroundImage: =img_capa
+    Fill: =RGBA(0, 0, 0, 0)
+    LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
+
+    Button2 As button:
+        BorderColor: =RGBA(210, 210, 210, 1)
+        BorderThickness: =1
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(70, 83, 92, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Semibold
+        Height: =95
+        HoverBorderColor: =RGBA(224, 228, 230, 1)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(162, 173, 181, 1)
+        OnSelect: =Navigate(BrowseScreen1,ScreenTransition.Fade)
+        PressedBorderColor: =RGBA(186, 108, 102, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(246, 88, 16, 1)
+        RadiusBottomLeft: =255
+        RadiusBottomRight: =255
+        RadiusTopLeft: =255
+        RadiusTopRight: =255
+        Size: =24
+        Text: ="Nova solicitação"
+        Width: =356
+        X: =142
+        Y: =945
+        ZIndex: =1
+
+    Button2_1 As button:
+        BorderColor: =RGBA(210, 210, 210, 1)
+        BorderThickness: =1
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(70, 83, 92, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Semibold
+        Height: =46
+        HoverBorderColor: =RGBA(224, 228, 230, 1)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(162, 173, 181, 1)
+        OnSelect: =Navigate(addfilial,ScreenTransition.Fade)
+        PressedBorderColor: =RGBA(186, 108, 102, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(246, 88, 16, 1)
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="add filial"
+        Visible: =var_Dev
+        Width: =172
+        X: =142
+        Y: =1058
+        ZIndex: =2
+
+    Button2_2 As button:
+        BorderColor: =RGBA(210, 210, 210, 1)
+        BorderThickness: =1
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(70, 83, 92, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Semibold
+        Height: =46
+        HoverBorderColor: =RGBA(224, 228, 230, 1)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(162, 173, 181, 1)
+        OnSelect: =Navigate(cad_Screen1,ScreenTransition.Fade)
+        PressedBorderColor: =RGBA(186, 108, 102, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(246, 88, 16, 1)
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="add produto"
+        Visible: =var_Dev
+        Width: =172
+        X: =326
+        Y: =1058
+        ZIndex: =3
+
