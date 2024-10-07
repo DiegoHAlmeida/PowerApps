@@ -18,7 +18,7 @@
       "Name": "comp_true",
       "PropertyDataTypeKey": "Boolean",
       "Tooltip": "Uma propriedade personalizada",
-      "Type": "{\"Version\":\"1.341\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -29,7 +29,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638530338883757611",
+  "LastModifiedTimestamp": "638639114206301414",
   "Name": "73e2023f22ed49b1888be5981bf9d602",
   "OverridableProperties": {},
   "SourceLibraryId": "9de8986c-0364-4c5f-bb73-cefe24646fce",

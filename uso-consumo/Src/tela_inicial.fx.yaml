@@ -28,7 +28,7 @@ tela_inicial As screen:
         Text: ="Nova solicitação"
         Width: =356
         X: =142
-        Y: =945
+        Y: =984
         ZIndex: =1
 
     Button2_1 As button:
@@ -53,11 +53,11 @@ tela_inicial As screen:
         RadiusTopLeft: =20
         RadiusTopRight: =20
         Size: =16
-        Text: ="add filial"
+        Text: ="+ Filial"
         Visible: =var_Dev
         Width: =172
-        X: =142
-        Y: =1058
+        X: =47
+        Y: =900
         ZIndex: =2
 
     Button2_2 As button:
@@ -82,10 +82,39 @@ tela_inicial As screen:
         RadiusTopLeft: =20
         RadiusTopRight: =20
         Size: =16
-        Text: ="add produto"
+        Text: ="+ Produto"
         Visible: =var_Dev
         Width: =172
-        X: =326
-        Y: =1058
+        X: =234
+        Y: =900
         ZIndex: =3
+
+    Button2_3 As button:
+        BorderColor: =RGBA(210, 210, 210, 1)
+        BorderThickness: =1
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(70, 83, 92, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Semibold
+        Height: =46
+        HoverBorderColor: =RGBA(224, 228, 230, 1)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(162, 173, 181, 1)
+        OnSelect: =Navigate(ResumeScreen,ScreenTransition.Fade)
+        PressedBorderColor: =RGBA(186, 108, 102, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(246, 88, 16, 1)
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="Lista produtos"
+        Visible: =var_Dev
+        Width: =172
+        X: =418
+        Y: =900
+        ZIndex: =4
 
